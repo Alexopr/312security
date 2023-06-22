@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <title>All Users</title>
+</head>
+
+<body>
+<div align="center">
+
+    <form th:action="@{/admin/create}" th:object="${user}" method="post">
+
+        <label for="name">Enter name: </label>
+        <input type="text" th:field="*{name}" id="name">
+        <br/>
+
+        <label for="surname">Enter surname: </label>
+        <input type="text" th:field="*{surname}" id="surname">
+        <br/>
+
+        <label for="age">Enter age: </label>
+        <input type="text" th:field="*{age}" id="age">
+        <br/>
+
+        <label for="password">Enter password: </label>
+        <input type="text" th:field="*{password}" id="password">
+        <br/>
+
+        <label for="email">Enter email: </label>
+        <input type="text" th:field="*{email}" id="email">
+        <br>
+
+        <label for="roles">Roles:</label>
+
+        <br>
+
+        <select multiple name="roles" id="roles">
+            <option th:each="role : ${roles}" th:value="${role.getId()}" th:text="${role.getName()}"></option>
+        </select>
+
+        <br>
+
+        <input type="submit" value="Create">
+
+    </form>
+
+    <h4>
+        <a th:href="@{/logout}">
+            <button type="submit" style="font-size: 1em; padding:3px 120px;">Logout</button>
+        </a>
+    </h4>
+
+</div>
+</body>
+</html>
